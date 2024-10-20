@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Links Discord</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Adicione esta linha -->
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="loading-screen" id="loadingScreen" onclick="startSite()">
+        <h1 class="loading-message">...</h1> <!-- Alterado aqui -->
+    </div>
+    <div class="container animate" id="mainContainer" style="display: none;">
+        <h1 id="tituloGerador" class="titulo">Gerador de Links Discord</h1>
+        <h1 id="tituloConfiguracoes" class="titulo" style="display: none;">Tools</h1>
+        
+        <div id="generatorContainer" class="generator-container">
+            <label for="quantidade" class="label">Quantidade de Códigos:</label>
+            <input type="number" id="quantidade" value="1" min="1" max="1000" class="input">
+            <div id="linksContainer" class="links animate"></div>
+            <div class="button-container">
+                <button class="botao" onclick="gerar()">Gerar</button>
+                <button class="botao" onclick="copiar()">Copiar</button>
+                <button class="botao" onclick="baixar()">Baixar .txt</button>
+            </div>
+        </div>
+
+        <div class="settings-icon-container">
+            <img src="icons8-manutenção-26.png" alt="Configurações" class="settings-icon" onclick="toggleSettings()" id="settingsIcon">
+        </div>
+
+        <div id="settingsContainer" class="settings-container">
+            <h2>Tools</h2>
+            <div class="source-box" onclick="window.open('https://www.mediafire.com/file/sh02sc4v8v8qhg8/PACK_SOURCES_BY_WQ.zip/file', '_blank')">
+                <h3 class="source-title">+100 SOURCES BOT DISCORD</h3>
+                <p class="source-description">bot de div, loja, ticket, comunidade e etc...</p>
+            </div>
+            <div class="source-box" onclick="window.open('https://www.mediafire.com/file/sflipzvicf6xwii/SCRIPTS+BASCIS+PARA+BOT+DISCORD.zip/file', '_blank')">
+                <h3 class="source-title">SCRIPTS BASICOS PARA BOT DISCORD</h3>
+                <p class="source-description">Apenas alguns scripts básicos para o bot do Discord.</p>
+            </div>
+            <button class="botao voltar-botao" onclick="toggleSettings()">Voltar</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="Get You (feat. Kali Uchis).mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Função para iniciar o site
+        function startSite() {
+            // Esconde a tela de carregamento
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.classList.add('fade-out'); // Adiciona animação de saída
+            
+            // Mostra o conteúdo principal
+            const mainContainer = document.getElementById('mainContainer');
+            mainContainer.style.display = 'block';
+
+            // Toca a música
+            const music = document.getElementById('background-music');
+            music.play();
+
+            // Remove a tela de carregamento após a animação
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500); // Espera a animação de fade-out acabar
+        }
+
+        // Desabilita a tecla F12 e o clique direito
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) { // Prevent F12
+                return false;
+            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+                return false;
+            }
+        });
+
+        $(document).on("contextmenu", function (e) {        
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

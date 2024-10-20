@@ -1,0 +1,316 @@
+/* Animação de entrada do site */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animação de desvanecimento */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* Animação para os links */
+@keyframes fadeInLinks {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação para o ícone de configurações */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* Fundo com blur */
+.background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('download.jpg') no-repeat center center/cover; /* Imagem de fundo */
+    filter: blur(15px); /* Aplicando o blur */
+    z-index: -1; /* Fica atrás de todo o conteúdo */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
+    margin: 0;
+    animation: fadeIn 1s ease-out;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo um pouco mais claro */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    animation: zoomIn 0.8s ease-out;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Fica acima de tudo */
+    animation: fadeIn 0.5s ease-out; /* Animação de entrada */
+}
+
+.loading-message {
+    font-size: 5em; /* Aumente o tamanho da fonte */
+    font-weight: bold; /* Deixe em negrito */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centralize o texto */
+    margin: 0; /* Remova margens para melhor centralização */
+    position: absolute; /* Posiciona no centro da tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta a posição para o centro exato */
+}
+
+.titulo {
+    color: #ff4d4d;
+    margin-bottom: 20px;
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.label,
+.input {
+    margin-top: 10px;
+    color: white;
+    font-size: 1.2em;
+}
+
+.input {
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1em;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.input:focus {
+    border-color: #ff4d4d;
+}
+
+.generator-container {
+    width: 100%;
+}
+
+#linksContainer {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.link {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    animation: fadeInLinks 0.5s ease forwards; /* Animação de entrada para cada link */
+}
+
+/* Classe de animação para links */
+.fade-in {
+    opacity: 0; /* Começa invisível */
+    animation: fadeInLinks 0.5s forwards; /* Aplica animação de fade in */
+}
+
+/* Classe de animação para esconder */
+.fade-out {
+    animation: fadeOut 0.3s forwards; /* Aplica animação de fade out */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.botao {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ff4d4d;
+    color: white;
+    border: 2px solid #000;
+    border-radius: 12px;
+    transition: background-color 0.4s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botao:hover {
+    background-color: #ff3333;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.botao:active {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do ícone de configurações */
+.settings-icon-container {
+    margin-top: 20px;
+    cursor: pointer;
+    animation: pulse 2s infinite; /* Animação de pulso */
+}
+
+.settings-icon {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.settings-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo da seção de configurações */
+.settings-container {
+    display: none; /* Começa escondida */
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    width: 600px; /* Aumente a largura conforme necessário */
+    min-height: 400px; /* Defina uma altura mínima se desejar */
+    text-align: left;
+    position: relative; /* Adicionado para centralização */
+    left: 50%; /* Adicionado para centralização */
+    transform: translateX(-50%); /* Adicionado para centralização */
+}
+
+.settings-container.active {
+    display: block; /* Mostra quando a classe 'active' é adicionada */
+    animation: slideDown 0.5s ease-out forwards; /* Animação de deslizamento */
+}
+
+/* Estilo do quadrado de fontes */
+.source-box {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo transparente */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: filter 0.3s, transform 0.3s;
+    cursor: pointer;
+    overflow: hidden; /* Para garantir que o brilho não ultrapasse os limites */
+}
+
+.source-box:hover {
+    filter: brightness(1.2); /* Efeito de brilho ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.source-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%; /* Ajuste para o tamanho do brilho */
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%) scale(0); /* Começa invisível */
+    transition: transform 0.3s ease; /* Suaviza a animação */
+    pointer-events: none; /* Ignora eventos de mouse */
+}
+
+.source-box:hover::after {
+    transform: translate(-50%, -50%) scale(1); /* Ativa brilho ao passar o mouse */
+}
+
+.source-title {
+    color: white;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.source-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+}
+
+/* Estilo do botão de voltar */
+.voltar-botao {
+    margin-top: 20px;
+    background-color: #ff4d4d;
+    border: 2px solid #000;
+}
+
+.voltar-botao:hover {
+    background-color: #ff3333;
+}
